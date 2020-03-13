@@ -17,8 +17,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Result Arrow
+    second: {fileID: 2100000, guid: 328ab01f257da3c4882d0c8be7d87991, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Rusty Metal
     second: {fileID: 2100000, guid: 28ff11c4e52ae4f40ab1d8a521d83549, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen
+    second: {fileID: 2100000, guid: 907347c242c22cf4cb4167f5df90ea42, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

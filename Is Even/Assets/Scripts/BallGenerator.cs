@@ -7,34 +7,32 @@ namespace Jack.IsEven
 {
     public class BallGenerator : MonoBehaviour
     {
-        [SerializeField] private float _ballDistance = .2f;
         [SerializeField] private GameObject _ballPrefab;
         [SerializeField] private float _interval = .2f;
         public static BallGenerator Instance { get; private set; }
+        public bool Generating { get; private set; }
 
         private void Awake()
         {
             Instance = this;
         }
 
-        public void GenerateBalls(int numberOfBalls, Action onGenerationFinish)
+        public void GenerateBalls(int numberOfBalls)
         {
-            StartCoroutine(GenerateBallsCoroutine(numberOfBalls, onGenerationFinish));
+            StartCoroutine(GenerateBallsCoroutine(numberOfBalls));
         }
 
-        private IEnumerator GenerateBallsCoroutine(int numberOfBalls, Action onGenerationFinish)
+        private IEnumerator GenerateBallsCoroutine(int numberOfBalls)
         {
-            Vector3 currentPosition = transform.position;
+            Generating = true;
             for (int i = 1; i <= numberOfBalls; i++)
             {
                 GameObject newBall = Instantiate(_ballPrefab, transform);
-                newBall.transform.position = currentPosition;
-                currentPosition += transform.forward * _ballDistance;
+                newBall.transform.position = transform.position;
 
                 yield return new WaitForSecondsRealtime(_interval);
             }
-
-            onGenerationFinish?.Invoke();
+            Generating = false;
         }
     }
 }
